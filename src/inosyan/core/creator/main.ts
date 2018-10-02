@@ -6,25 +6,44 @@ namespace inosyan_core_creator {
     import BlocksProxy = inosyan_core_utils.BlocksProxy
     import Size2 = inosyan_core_math.Size2
 
+    /**
+     * Base class used to make a creator class. / 建築用クラスを作るための基底クラスです。
+     */
     export class CreatorBase {
         protected position: Vector3;
         protected children: CreatorBase[];
         protected rotDir: FourDirection;
 
+        /**
+         * @param position Start position of creation / 建築の開始位置
+         * @param children Child elements / 子要素
+         */
         constructor(position: Vector3, children: CreatorBase[]) {
             this.position = position;
             this.children = children;
             this.rotDir = FourDirection.Forward;
         }
 
+        /**
+         * Return the string indicated this instance. / インスタンスの内容を表す文字列を返します。
+         */
         public toString(): string {
             return `CreatorBase: {position: ${this.position}}`;
         }
 
+        /**
+         * Add child element. / 子要素を追加します。
+         * @param element Child element / 子要素
+         */
         public addChild(element: CreatorBase): void {
             this.children.push(element);
         }
 
+        /**
+         * Start creation. / 建築を開始します。
+         * @param parentPosition Parent element's position / 親要素の位置
+         * @param direction Direction to create / 建築する向き
+         */
         public build(parentPosition: Vector3, direction: CompassDirection): void {
             this.rotDir = Converter.convertFourDirectionFromCompass(direction);
             const delta = this.position.clone();

@@ -3,7 +3,14 @@ namespace inosyan_core_utils {
     import Size3 = inosyan_core_math.Size3
     import Vector3 = inosyan_core_math.Vector3
 
+    /**
+     * Convert something value to another type. / ある値を別の型に変換します。
+     */
     export class Converter {
+        /**
+         * Convert CompassDirection to FourDirection. / CompassDirection を FourDirection に変換します。
+         * @param direction CompassDirection
+         */
         static convertFourDirectionFromCompass(direction: CompassDirection): FourDirection {
             switch (direction) {
                 case CompassDirection.North: return FourDirection.Forward;
@@ -15,7 +22,14 @@ namespace inosyan_core_utils {
         }
     }
 
+    /**
+     * Manipulate agent. / エージェントを操作します。
+     */
     export class AgentProxy {
+        /**
+         * Teleport agent to the specified position. / エージェントを指定した座標にテレポートさせます。
+         * @param position Position to teleport / テレポートさせる位置
+         */
         static teleport(position: Vector3): void {
             const orgPos = PlayerProxy.position();
             PlayerProxy.teleport(position);
@@ -23,6 +37,11 @@ namespace inosyan_core_utils {
             PlayerProxy.teleport(orgPos);
         }
 
+        /**
+         * Teleport agent to the specified position and change direction. / エージェントを指定した座標にテレポートさせ、向きを変えます。
+         * @param position Position to teleport / テレポートさせる位置
+         * @param turnDirection Direction of agent / エージェントの向き
+         */
         static teleportAndTurn(position: Vector3, turnDirection: FourDirection): void {
             AgentProxy.teleport(position);
 
@@ -49,37 +68,90 @@ namespace inosyan_core_utils {
         }
     }
 
+    /**
+     * Manipulate blocks. / ブロックを操作します。
+     */
     export class BlocksProxy {
+        /**
+         * Fill in the specified range with block. / 指定した範囲をブロックで埋めます。
+         * @param blockId Block's ID / ブロックのID
+         * @param fromPos Start position of the range / 範囲の開始位置
+         * @param toPos End position of the range / 範囲の終了位置
+         * @param fillOperation Fill options for exixting blocks. / 既存のブロックの取扱方法
+         */
         static fill(blockId: number, fromPos: Vector3, toPos: Vector3,
             fillOperation: FillOperation = FillOperation.Replace): void {
             blocks.fill(blockId, fromPos.toPosition(), toPos.toPosition(), fillOperation);
         }
 
+        /**
+         * Place a block to the specified position. / 指定した位置にブロックを置きます。
+         * @param blockId Block's ID / ブロックのID
+         * @param pos Position / 位置
+         */
         static place(blockId: number, pos: Vector3): void {
             blocks.place(blockId, pos.toPosition());
         }
 
+        /**
+         * Clone the blocks in the specified range. / 指定した範囲にあるブロックを複製します。
+         * @param begin Start position of the range / 範囲の開始位置
+         * @param end End position of the range / 範囲の終了位置
+         * @param destination Destination position / 複製先の位置
+         * @param mask Replace|Masked / 置き換え|マスク
+         * @param mode Normal|Move|Force / 通常|移動|強制
+         */
         static clone(begin: Vector3, end: Vector3, destination: Vector3,
             mask: CloneMask = CloneMask.Replace, mode: CloneMode = CloneMode.Normal): void {
             blocks.clone(begin.toPosition(), end.toPosition(), destination.toPosition(), mask, mode);
         }
 
+        /**
+         * Replace the blocks in the specified range with the new block. / 指定した範囲にあるブロックを新しいブロックに置き換えます。
+         * @param newblock New block ID / 新しいブロックID
+         * @param oldblock Old block ID / 古いブロックID
+         * @param from Start position of the range / 範囲の開始位置
+         * @param to End position of the range / 範囲の終了位置
+         */
         static replace(newblock: number, oldblock: number, from: Vector3, to: Vector3): void {
             blocks.replace(newblock, oldblock, from.toPosition(), to.toPosition());
         }
     }
 
+    /**
+     * Enhanced commands for block manipulation. / ブロック操作に関する便利コマンド
+     */
     export class BuildUtil {
+        /**
+         * Clear blocks in the specified range. / 指定した範囲のブロックを消します。
+         * @param size Range to clear / クリアする範囲
+         * @param startPos Start position / 開始位置
+         */
         static clear(size: Size3, startPos: Vector3): void {
             BuildUtil.fill(Block.Air, size, startPos);
         }
 
-        static fill(blockType: number, size: Size3, startPos: Vector3, fillOperation: FillOperation = FillOperation.Replace): void {
+        /**
+         * Fill in the specified range with block. / 指定した範囲をブロックで埋めます。
+         * @param blockId Block ID / ブロックID
+         * @param size Range to fill / 埋める範囲
+         * @param startPos Start position / 開始位置
+         * @param fillOperation Fill options for exixting blocks. / 既存のブロックの取扱方法
+         */
+        static fill(blockId: number, size: Size3, startPos: Vector3, fillOperation: FillOperation = FillOperation.Replace): void {
             BuildUtil.spaceOperation(size, startPos, (size, pos) => {
-                BlocksProxy.fill(blockType, pos, pos.clone().addSize(size), fillOperation);
+                BlocksProxy.fill(blockId, pos, pos.clone().addSize(size), fillOperation);
             });
         }
 
+        /**
+         * Clone the blocks in the specified range. / 指定した範囲にあるブロックを複製します。
+         * @param begin Start position of the range / 範囲の開始位置
+         * @param size Range to clone / 複製する範囲
+         * @param destination Destination position / 複製先の位置
+         * @param mask Replace|Masked / 置き換え|マスク
+         * @param mode Normal|Move|Force / 通常|移動|強制
+         */
         static clone(begin: Vector3, size: Size3, destination: Vector3,
             mask: CloneMask = CloneMask.Replace, mode: CloneMode = CloneMode.Normal): void {
             const dif = destination.clone().subtract(begin);
@@ -90,17 +162,31 @@ namespace inosyan_core_utils {
             });
         }
 
+        /**
+         * Replace the blocks in the specified range with the new block. / 指定した範囲にあるブロックを新しいブロックに置き換えます。
+         * @param newblock New block ID / 新しいブロックID
+         * @param oldblock Old block ID / 古いブロックID
+         * @param size Range to replace / 置き換える範囲
+         * @param startPos Start position / 開始位置
+         */
         static replace(newblock: number, oldblock: number, size: Size3, startPos: Vector3): void {
             BuildUtil.spaceOperation(size, startPos, (size, pos) => {
                 BlocksProxy.replace(newblock, oldblock, pos, pos.clone().addSize(size));
             });
         }
 
-        static frame(blockType: Block, size: Size3, startPos: Vector3,
+        /**
+         * Create frame in the specified range. / 指定した範囲に枠を作ります。
+         * @param blockId Block ID / ブロックID
+         * @param size Range to create frame / フレームを作る範囲
+         * @param startPos Start position / 開始位置
+         * @param thickness Thickness of frame / フレームの厚み
+         */
+        static frame(blockId: number, size: Size3, startPos: Vector3,
             thickness: number = 1): void {
             const makeLine = (localSize: Size3, localPos: Vector3) => {
                 BuildUtil.spaceOperation(localSize, localPos, (size, pos) => {
-                    BlocksProxy.fill(blockType, pos, pos.clone().addSize(size));
+                    BlocksProxy.fill(blockId, pos, pos.clone().addSize(size));
                 });
             }
             const marginX = size.width - thickness;
@@ -132,6 +218,15 @@ namespace inosyan_core_utils {
             }
         }
 
+        /**
+         * Draw a pattern by placing blocks in a plate form. / 板状にブロックをならべてパターンを描きます。
+         * @param startPos Start position / 開始位置
+         * @param direction Direction of plate / 板の向き
+         * @param size Range to create frame / フレームを作る範囲
+         * @param patternBlock Blocks for pattern / パターンに使うブロック
+         * @param patternData Pattern data / パターンデータ
+         * @param ignoreBlocks Block ID not to be placed.  配置を行わないブロックID
+         */
         static drawPlane(startPos: Vector3, direction: SixDirection, size: Size2,
             patternBlock: number[], patternData: number[][], ignoreBlocks: number[]): void {
 
@@ -367,17 +462,30 @@ namespace inosyan_core_utils {
         }
     }
 
+    /**
+     * Manipulate player. / プレイヤーを操作します。
+     */
     export class PlayerProxy {
+        /**
+         * Get the player's position. / プレイヤーの位置を取得します。
+         */
         static position(): Vector3 {
             const pos = new Vector3();
             pos.setPosition(player.position().toWorld(), true);
             return pos;
         }
 
+        /**
+         * Tepeport player to the specified position. / プレイヤーを指定した位置にテレポートします。
+         * @param pos Position / 位置
+         */
         static teleport(pos: Vector3): void {
             player.teleport(pos.toPosition());
         }
 
+        /**
+         * Get the player's direction. / プレイヤーの向きを取得します。
+         */
         static getDirection(): CompassDirection {
             const centerPos = PlayerProxy.position().clone().addValue(0, 0, 0);
             const dirs = [CompassDirection.North, CompassDirection.South, CompassDirection.East, CompassDirection.West];
