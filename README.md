@@ -42,3 +42,16 @@ It contains programs to build houses and to clear blocks in a wide area.
 家を建てるプログラムと、広範囲のブロックを消すプログラムを含んでいます。
 
 Youtube: https://youtu.be/MyUZA6bOkoo  
+
+### Movie Camera
+Update date 更新日 2018.10.05  
+Project name / プロジェクト名: inosyan_moviecamera  
+MakeCode URL: https://makecode.com/_Vsd70pc6rhVm  
+
+This is the work titled "Movie Camera" created by inosyan.  
+It controls camera programmatically for movie capturing.
+
+これはイノシャンの作品「ムービーカメラ」です。  
+動画撮影に便利なカメラの動きをプログラムで制御します。
+
+
