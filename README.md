@@ -48,6 +48,7 @@ Update date 更新日 2018.10.05
 Project name / プロジェクト名: inosyan_moviecamera  
 MakeCode URL: https://makecode.com/_Vsd70pc6rhVm  
 
+![](img/moviecamera/orbit.gif)  
 This is the work titled "Movie Camera" created by inosyan.  
 It controls camera programmatically for movie capturing.
 
