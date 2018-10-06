@@ -72,7 +72,7 @@ Fix Position means the position on the timeline where you want to fix the direct
 フィックスポジションは、カメラを固定したい時間軸上の位置です。  
 
 For example, '1' (Start) means the line of sight from the start position,  
-例えば「1 (Start)」なら、開始位置からのターゲットへの視線、 
+例えば「1 (Start)」なら、開始位置からのターゲットへの視線、  
 ![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/moviecamera/fixdolly1.gif)  
 
 '3' (End) means the line of sight from the end position,  
