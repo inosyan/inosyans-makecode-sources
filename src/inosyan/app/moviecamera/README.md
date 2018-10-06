@@ -53,14 +53,14 @@ First, move to the end of line of sight, type 'settarget' with chat command to s
 Nest, move to the start position, 'setstart' with chat command to set it to be start position.  
 And move to the end position, 'setend' with chat command to set it to be end position.  
 Finally, 'dolly <Frame Count>' with chat command to execute.  
-For example, 'dolly 360' means that frame count is 360. It will move on a straight line 100 frames while loot at the target from the start position to the end position.  
+For example, 'dolly 100' means that frame count is 100. It will move on a straight line 100 frames while loot at the target from the start position to the end position.  
 
 ターゲットを見ながら直線上を動きます。  
 まず、視線の先にあたる位置まで移動し、チャットコマンドで 「settarget」と打ち、ターゲットを設定します。  
 次に、撮影の開始地点まで行き、チャットコマンドで 「settstart」と打ち、開始地点を設定します。  
 そして、撮影の終了地点まで行き、チャットコマンドで 「settend」と打ち、終了地点を設定します。  
 最後に、チャットコマンドで「dolly <フレーム数>」で実行します。  
-例えば「dolly 360」なら、フレーム数が360です。ターゲットに視線を置き、開始地点から終了地点まで直線的に100コマ動きます。  
+例えば「dolly 100」なら、フレーム数が100です。ターゲットに視線を置き、開始地点から終了地点まで直線的に100コマ動きます。  
 
 ## Fix Dolly Camera / フィックスドリーカメラ
 It is almost same as dolly camera except that the direction of camera is fixed.  
