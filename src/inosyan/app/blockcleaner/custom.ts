@@ -125,7 +125,7 @@ namespace inosyan_blockcleaner {
     function combineNumbers(dividedNumbers: number[], digit: number): number {
         let ret = 0;
         dividedNumbers.forEach((v, idx) => {
-            ret += v * (10 ** digit);
+            ret += v * (10 ** (digit * idx));
         })
         return ret;
     }
@@ -165,7 +165,7 @@ namespace inosyan_blockcleaner {
     //%blockId="inosyanBlockCleanerOption"
     //%block="Clear option Fill Ground: %fillGround Include torch: %includeTorch"
     export function getOption(fillGround: FillGround, includeTorch: boolean): number {
-        return combineNumbers([(includeTorch ? 1 : 0), fillGround], 1)
+        return combineNumbers([fillGround, (includeTorch ? 1 : 0)], 1)
     }
 
 	/**

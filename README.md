@@ -58,7 +58,7 @@ It controls camera programmatically for movie capturing.
 ### Block Cleaner
 Update date 更新日 2018.10.08  
 Project name / プロジェクト名: inosyan_blockcleaner  
-MakeCode URL: https://makecode.com/_HmtTtrbxhUeL  
+MakeCode URL: https://makecode.com/_6Ah5YJP1eYod
 [[Source]](src/inosyan/app/blockcleaner/)  
 ![](img/blockcleaner/clearblock.gif)  
 This is the work titled "Block Cleaner" created by inosyan.  
