@@ -1,14 +1,12 @@
 # House Builder
-Update date 更新日 2018.10.02  
+Update date 更新日 2018.10.08  
 Project name / プロジェクト名: inosyan_housebuilder  
 
 This is the work titled "House Builder" created by inosyan.  
-It contains programs to build houses and to clear blocks in a wide area.  
-
+It contains programs to build houses.  
 これはイノシャンの作品「ハウスビルダー」です。  
-家を建てるプログラムと、広範囲のブロックを消すプログラムを含んでいます。  
-
-Youtube: https://youtu.be/MyUZA6bOkoo  
+家を建てるプログラムを含んでいます。  
+[[Youtube]](https://youtu.be/MyUZA6bOkoo)  
 
 It uses inosyan's library.  
 イノシャンのライブラリを使用しています。  
@@ -16,20 +14,55 @@ It uses inosyan's library.
 - inosyan_core_utils
 - inosyan_core_creator
 
+Other works, newest version, source code is on [GitHub](https://github.com/inosyan/inosyans-makecode-sources).    
+その他の作品、最新版、ソースコードは [GitHub](https://github.com/inosyan/inosyans-makecode-sources) に掲載してあります。
+
 ## buildHouse
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/housebuilder.gif)  
+
 This is program to build houses.  
-You can configure the appearance of house, size, whether the door is open inside, furnitures are inclued or not.  
-You can specify the direction to build by putting a torch in front of player.  
-
+First, stand in front of the place that you want to clear.  
 家を建てるプログラムです。  
-パラメーターにより、家の外観や、大きさ、ドアが内開きかどうかや、家具付きかどうかなどを設定することができます。  
-たいまつをプレイヤーの前に置いて建てる方向を指定できます。  
+まず、消したい箇所の前に立ち、たいまつを置きます。プレイヤーから１マスとなりにおいてください。  
 
-## clearAll
-Clear all blocks in front of player.  
-You can configure the clear range, whether fill ground with the blocks under the player.  
-You can specify the direction to clear by putting a torch in front of player.  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/blockcleaner/put-torch.gif)  
 
-プレイヤーの前のブロックをすべて消します。  
-パラメーターにより、クリアする範囲、地面をプレイヤーの下のブロックで埋めるかどうかを指定することができます。  
-たいまつをプレイヤーの前に置いてクリアする方向を指定できます。  
+Next, type 'buildhouse <size> <house type> <option>' with chat command to execute.  
+Size is a number composed of 2 digit width, depth, height. For example, 070503 means width: 7, depth: 5, height: 3.  
+つぎに、チャットコマンドで「buildhouse <サイズ> <ハウスタイプ> <オプション>」と打ち実行します。  
+サイズは、幅,奥行き,高さを2桁ずつ組み合わせた数字です。例えば、070503 は 幅: 7, 奥行き: 5, 高さ: 3 を意味します。  
+
+House type is a number that specifies the appearance of house.
+ハウスタイプは、家の見た目を指定する数字です。  
+- WoodenDark / 暗い木造の家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type1.gif)  
+- WoodenLight / 明るい木造の家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type2.gif)  
+- Stone / 石の家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type3.gif)  
+- Quartz / 水晶の家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type4.gif)  
+- Brick / レンガの家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type5.gif)  
+- Sand / 砂の家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type6.gif)  
+- DarkOak / ダークオークの家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type7.gif)  
+- Oak / オークの家  
+![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/house-type8.gif)  
+
+Option is a number composed of 1 digit optoins.  
+オプションは、1桁ずつのオプション項目を組み合わせた数字です。  
+
+Option is a number composed of 1 digit optoins.  
+オプションは、1桁ずつのオプション項目を組み合わせた数字です。  
+- Inward open door / 内開きかどうか  
+    - 0: Outward / 外開き  
+    ![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/door-outer.gif)  
+    - 1: Inward / 内開き  
+    ![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/door-inner.gif)  
+- Without furniture / 家具を置かないかどうか
+    - 0: 置く  
+    ![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/furniture-with.gif)  
+    - 1: 置かない  
+    ![](https://raw.githubusercontent.com/inosyan/inosyans-makecode-sources/master/img/housebuilder/furniture-without.gif)  
