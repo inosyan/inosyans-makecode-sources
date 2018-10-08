@@ -196,6 +196,6 @@ namespace inosyan_blockcleaner {
     //%block
     export function placeBlockUnderFoot(): void {
         const pos = PlayerProxy.position().addValue(0, -1, 0);
-        blocks.AnimationPlaybackEvent(Block.Dirt, pos.toPosition());
+        blocks.place(Block.Dirt, pos.toPosition());
     }
 }
