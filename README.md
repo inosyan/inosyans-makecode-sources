@@ -53,3 +53,15 @@ This is the work titled "Movie Camera" created by inosyan.
 It controls camera programmatically for movie capturing.  
 これはイノシャンの作品「ムービーカメラ」です。  
 動画撮影に便利なカメラの動きをプログラムで制御します。
+
+----
+### Block Cleaner
+Update date 更新日 2018.10.08  
+Project name / プロジェクト名: inosyan_blockcleaner  
+MakeCode URL: https://makecode.com/_HmtTtrbxhUeL  
+[[Source]](src/inosyan/app/blockcleaner/)  
+![](img/blockcleaner/clearblock.gif)  
+This is the work titled "Block Cleaner" created by inosyan.  
+It contains programs to clear blocks in a wide area.  
+これはイノシャンの作品「ブロッククリーナー」です。  
+広範囲のブロックを消すプログラムを含んでいます。  
